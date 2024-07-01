@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Create\PostController;
 use App\Http\Controllers\SignIn\AuthController;
 use App\Http\Controllers\SignUp\EmailController;
 use App\Http\Controllers\SignUp\FullNameController;
@@ -10,14 +11,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
-    // return $request->user();
-    $user = User::find(1);
+    return $request->user();
+    // $user = User::find(1);
 
-    if ($user) {
-        $user->delete();
-        // Upon deletion, all related records in `user_credentials` with this `$userId` will also be deleted
-    }
+    // if ($user) {
+    //     $user->delete();
+    //     // Upon deletion, all related records in `user_credentials` with this `$userId` will also be deleted
+    // }
 })->middleware('auth:sanctum');
+
+// Route::post('/create/post', function (Request $request) {
+//     $user = User::find(1);
+//     $id = $user->uid;
+//     dump($id);
+
+// })->middleware('auth:sanctum');
 
 // Define your routes inside the group
 Route::post('/auth', [AuthController::class, 'auth']);
@@ -30,3 +38,5 @@ Route::group(['prefix' => 'signup'], function () {
     Route::post('/username', [UsernameController::class, 'username'])->middleware('auth:sanctum');
     Route::post('/profile', [ProfileController::class, 'profile'])->middleware('auth:sanctum');
 });
+
+Route::post('/create/post', [PostController::class, 'post'])->middleware('auth:sanctum');

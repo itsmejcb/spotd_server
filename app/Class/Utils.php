@@ -64,11 +64,31 @@ class Utils
 
         // If the generated UID already exists, recursively call the function to generate a new one
         if ($existingUID) {
-            return self::generateUID();
+            return $this->generateUID();
         }
 
         // If the generated UID doesn't exist, return it
         return $UID;
+    }
+
+    public function generatePushKey()
+    {
+        $min = 1000000000;
+        $max = 9999999999;
+        $random_number = rand($min, $max);
+        $push_key = date('d') . date('Y') . date('m') . $random_number;
+
+        $existingUID = DB::table('posts')
+            ->where('push_key', $push_key)
+            ->exists();
+
+        // If the generated UID already exists, recursively call the function to generate a new one
+        if ($existingUID) {
+            return $this->generatePushKey();
+        }
+
+        // If the generated UID doesn't exist, return it
+        return $push_key;
     }
 
 }
