@@ -61,4 +61,8 @@ class User extends Authenticatable
         return $this->hasOne(UserProfile::class);
     }
 
+    public function forgotUsers()
+    {
+        return $this->hasOne(ForgotPassword::class);
+    }
 }

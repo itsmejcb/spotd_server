@@ -8,16 +8,16 @@ use App\Services\SignUp\UsernameService;
 
 class UsernameController extends Controller
 {
-    protected $userService;
+    protected $usernameService;
 
-    public function __construct(UsernameService $userService)
+    public function __construct(UsernameService $usernameService)
     {
-        $this->userService = $userService;
+        $this->usernameService = $usernameService;
     }
 
     public function username(UsernameRequest $request)
     {
-        $user = $this->userService->createUsername($request->validated());
+        $user = $this->usernameService->createUsername($request->validated());
 
         return $request->jsonResponse($user);
     }

@@ -8,16 +8,16 @@ use App\Services\SignUp\ProfileService;
 
 class ProfileController extends Controller
 {
-    protected $userService;
+    protected $profileService;
 
-    public function __construct(ProfileService $userService)
+    public function __construct(ProfileService $profileService)
     {
-        $this->userService = $userService;
+        $this->profileService = $profileService;
     }
 
     public function profile(ProfileRequest $request)
     {
-        $user = $this->userService->createProfile($request->validated());
+        $user = $this->profileService->createProfile($request->validated());
 
         return $request->jsonResponse($user);
     }

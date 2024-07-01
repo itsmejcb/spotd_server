@@ -8,17 +8,17 @@ use App\Services\SignUp\FullNameService;
 
 class FullNameController extends Controller
 {
-    protected $userService;
+    protected $fullNameService;
 
-    public function __construct(FullNameService $userService)
+    public function __construct(FullNameService $fullNameService)
     {
-        $this->userService = $userService;
+        $this->fullNameService = $fullNameService;
     }
 
     public function fullName(FullNameRequest $request)
     {
 
-        $user = $this->userService->createCredential($request->validated());
+        $user = $this->fullNameService->createCredential($request->validated());
         dump($user);
         return $request->jsonResponse($user);
     }
