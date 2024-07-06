@@ -1,7 +1,9 @@
-## Project Name
+## Spotd Server
 SPOTD is a robust web server built using Laravel with a structured N-Layer architecture, ensuring scalability and maintainability. I prioritize security with Laravel Sanctum API for robust authentication and authorization.
 
 ## Table of Contents
+- [Spotd Server](#spotd-server)
+- [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)

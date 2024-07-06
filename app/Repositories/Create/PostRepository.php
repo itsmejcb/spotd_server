@@ -27,7 +27,7 @@ class PostRepository
 
         return Post::updateOrCreate(
             [$this->key->PushKey => $data[$this->key->PushKey]], // Unique key to check existence
-            $data // Data to insert or update
+            $data
         );
     }
 }
