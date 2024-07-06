@@ -65,4 +65,37 @@ class User extends Authenticatable
     {
         return $this->hasOne(ForgotPassword::class);
     }
+
+    // public function following()
+    // {
+    //     return $this->hasMany(Follow::class, 'follows', 'follower_id', 'following_id');
+    // }
+
+    // public function followers()
+    // {
+    //     return $this->hasMany(Follow::class, 'follows', 'following_id', 'follower_id');
+    // }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function following()
+    {
+        return $this->hasOne(Follow::class);
+    }
+
+    public function followers()
+    {
+        return $this->hasOne(Follow::class);
+    }
+    public function history()
+    {
+        return $this->hasOne(UserHistory::class);
+    }
+    public function notification()
+    {
+        return $this->hasOne(UserNotification::class);
+    }
 }

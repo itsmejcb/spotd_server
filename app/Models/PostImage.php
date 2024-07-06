@@ -11,7 +11,11 @@ class PostImage extends Model
 
     protected $table = 'post_image';
 
-    protected $fillable = ['post_id', 'image', 'status'];
+    protected $fillable = [
+        'post_id',
+        'image',
+        'status',
+    ];
 
     public function post()
     {

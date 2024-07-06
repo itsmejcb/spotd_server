@@ -47,6 +47,26 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+        Schema::create('user_other', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('verify')->nullable();
+            $table->string('verify_status')->nullable();
+            $table->string('bio')->nullable();
+            $table->string('bio_status')->nullable();
+            $table->string('user_status')->nullable();
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+
+        Schema::create('user_favorite', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('favorite_id')->nullable();
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**
@@ -58,5 +78,7 @@ return new class extends Migration
         Schema::dropIfExists('user_credentials');
         Schema::dropIfExists('user_username');
         Schema::dropIfExists('user_profile');
+        Schema::dropIfExists('user_other');
+        Schema::dropIfExists('user_favorite');
     }
 };

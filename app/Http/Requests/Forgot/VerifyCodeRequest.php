@@ -35,7 +35,6 @@ class VerifyCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // $this->key->UID => 'required|max:15',
             $this->key->Code => 'required|max:6',
         ];
     }

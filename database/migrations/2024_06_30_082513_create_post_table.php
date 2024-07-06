@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('push_key')->unique();
-            // $table->string('title');
             $table->text('content')->nullable();
             $table->unsignedBigInteger('author_id');
             $table->timestamps();
@@ -26,6 +25,14 @@ return new class extends Migration
             $table->unsignedBigInteger('post_id');
             $table->string('image');
             $table->string('status');
+            $table->timestamps();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+        });
+
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('post_id');
+            $table->string('keyword')->nullable();
             $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
@@ -67,9 +74,12 @@ return new class extends Migration
         Schema::create('post_setting', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id');
-            $table->string('post_status')->nullable();
-            $table->string('react_status')->nullable();
-            $table->string('comment_status')->nullable();
+            // post status use for public for 1 and only me for 0 to hide the post for following
+            $table->string('post_type')->nullable();
+            // react type use to hide the react button 1 for visibility and 0 for gone
+            $table->string('react_type')->nullable();
+            // comment type use to hide the react button 1 for visibility and 0 for gone
+            $table->string('comment_type')->nullable();
             $table->timestamps();
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
@@ -144,6 +154,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('posts');
         Schema::dropIfExists('post_image');
+        Schema::dropIfExists('post_tag');
         Schema::dropIfExists('post_react');
         Schema::dropIfExists('post_comment');
         Schema::dropIfExists('post_comment_image');

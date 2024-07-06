@@ -17,10 +17,6 @@ class PostController extends Controller
 
     public function post(PostRequest $request)
     {
-        // $user = User::find(1);
-        // $id = $user->id;
-        // dump($id);
-
         $post = $this->postService->createPost($request->validated());
 
         return $request->jsonResponse($post);

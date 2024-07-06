@@ -4,11 +4,9 @@ namespace App\Http\Controllers\SignIn;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignIn\AuthRequest;
-use App\Models\User;
 use App\Services\SignIn\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {

@@ -8,19 +8,18 @@ class Post extends Model
 {
     protected $fillable = [
         'push_key',
-        // 'title',
         'content',
         'author_id',
     ];
 
     public function author()
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class);
     }
 
     public function images()
     {
-        return $this->hasMany(PostImage::class, 'post_id');
+        return $this->hasMany(PostImage::class);
     }
 
     public function reacts()
@@ -35,13 +34,12 @@ class Post extends Model
 
     public function settings()
     {
-        return $this->hasOne(PostSetting::class, 'post_id');
+        return $this->hasOne(PostSetting::class);
     }
 
     public function savedByUsers()
     {
-        return $this->belongsToMany(User::class, 'post_saved', 'post_id', 'user_id')
-            ->withTimestamps();
+        return $this->hasMany(PostSaved::class);
     }
 
     public function views()
@@ -51,8 +49,7 @@ class Post extends Model
 
     public function hiddenByUsers()
     {
-        return $this->belongsToMany(User::class, 'post_hide', 'post_id', 'user_id')
-            ->withTimestamps();
+        return $this->hasMany(PostHide::class);
     }
 
     public function reports()

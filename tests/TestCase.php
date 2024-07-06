@@ -7,21 +7,17 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 // use Tests\TestCase;
 abstract class TestCase extends BaseTestCase
 {
-    public function it_checks_if_data_is_more_than_5_days_old()
+    public function test()
     {
         // Timestamp of data created yesterday
-        $timestamp_created = 1719711057000;
+        $id = 1;
+        $user_id = 1;
+        $user_id = $user_id ? $user_id : $id;
+        echo "User ID: " . $user_id . "\n";
 
-        // Current timestamp
-        $current_timestamp = 1719714349019;
+// Assertions
+        $this->assertEquals(1, $user_id);
+        echo "User ID: " . $user_id . "\n";
 
-        // Calculate the difference in seconds
-        $diff_seconds = ($current_timestamp - $timestamp_created) / 1000;
-
-        // Convert seconds to days
-        $days_difference = $diff_seconds / (60 * 60 * 24);
-
-        // Assert that the data is less than 5 days old
-        $this->assertLessThan(5, $days_difference, "The data is less than 5 days old.");
     }
 }

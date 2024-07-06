@@ -35,11 +35,7 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'push_key' => 'required',
-            // $this->key->Title => 'nullable',
             $this->key->Content => 'string',
-            // $this->key->Status => 'nullable',
-            // $this->key->AuthorId => 'nullable',
             $this->key->ImageName => 'nullable',
             $this->key->ImageStatus => 'nullable',
             $this->key->PostStatus => 'nullable',

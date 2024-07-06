@@ -24,7 +24,7 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            $this->key->Email => 'required|string|email',
+            $this->key->Email => 'required|string|exists:users,email',
             $this->key->Password => 'required|string|min:7|max:30',
         ];
     }

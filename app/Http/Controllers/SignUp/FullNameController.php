@@ -17,7 +17,6 @@ class FullNameController extends Controller
 
     public function fullName(FullNameRequest $request)
     {
-
         $user = $this->fullNameService->createCredential($request->validated());
         dump($user);
         return $request->jsonResponse($user);

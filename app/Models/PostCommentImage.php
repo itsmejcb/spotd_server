@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PostCommentImage extends Model
 {
     use HasFactory;
-    protected $fillable = ['comment_id', 'image', 'status'];
+    protected $fillable = [
+        'comment_id',
+        'image',
+        'status',
+    ];
 
     public function comment()
     {

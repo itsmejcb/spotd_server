@@ -13,9 +13,9 @@ class PostSetting extends Model
 
     protected $fillable = [
         'post_id',
-        'comment_status',
-        'react_status',
-        'post_status',
+        'post_type',
+        'react_type',
+        'comment_type',
     ];
 
     public function post()

@@ -8,7 +8,11 @@ class PostBanned extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['post_id', 'banned_id', 'report_queue'];
+    protected $fillable = [
+        'post_id',
+        'banned_id',
+        'report_queue',
+    ];
 
     public function post()
     {
